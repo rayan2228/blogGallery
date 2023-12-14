@@ -10,7 +10,7 @@ const Search = () => {
         id=""
         className="px-5 py-3 border border-green-950 outline-transparent text-xl"
       />
-      <button className="w-32 px-5 py-3 text-xl font-semibold text-white bg-green-600 rounded-tr-lg rounded-br-lg border-2 border-green-600">
+      <button className="w-32 px-5 py-3 text-xl font-semibold text-white bg-green-950 rounded-tr-lg rounded-br-lg border-2 border-green-950">
         search
       </button>
     </div>

@@ -6,7 +6,7 @@ const Blog = ({ link }) => {
     <>
       <div>
         <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
-          <Link to={link}>
+          <Link to={"blog/1"}>
             <img
               className="rounded-t-lg"
               src="https://flowbite.com/docs/images/blog/image-1.jpg"
@@ -24,7 +24,7 @@ const Blog = ({ link }) => {
               far, in reverse chronological order.
             </p>
             <Link
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+              className="text-white bg-green-950  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
               to={link}
             >
               Read more
