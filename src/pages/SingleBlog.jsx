@@ -1,7 +1,8 @@
 import React from "react";
+import SingleBlogContainer from "../components/singleBlog/SingleBlogContainer";
 
 const SingleBlog = () => {
-  return <div>SingleBlog</div>;
+  return <SingleBlogContainer />;
 };
 
 export default SingleBlog;
