@@ -2,9 +2,11 @@ import React from "react";
 
 const Select = ({ options }) => {
   return (
-    <select>
-      {options?.map((value) => (
-        <option value={value}>{value}</option>
+    <select className="capitalize outline-none border border-green-950">
+      {options?.map((value, index) => (
+        <option value={value} key={index}>
+          {value}
+        </option>
       ))}
     </select>
   );

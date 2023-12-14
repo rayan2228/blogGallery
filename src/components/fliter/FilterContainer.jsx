@@ -7,7 +7,7 @@ import Sort from "./Sort";
 const FilterContainer = () => {
   return (
     <Container>
-      <Grid className={"grid-flow-col auto-cols-min gap-x-5"}>
+      <Grid className={"grid-flow-col auto-cols-min gap-x-5 my-5"}>
         <Filter />
         <Sort />
       </Grid>
