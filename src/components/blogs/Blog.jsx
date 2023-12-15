@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Img from "../layouts/UIhelpers/Img";
 
 const Blog = ({ link }) => {
   return (
@@ -7,10 +8,11 @@ const Blog = ({ link }) => {
       <div>
         <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
           <Link to={"blog/1"}>
-            <img
+            <Img
               className="rounded-t-lg"
               src="https://flowbite.com/docs/images/blog/image-1.jpg"
               alt=""
+              imgClassName={"rounded-t-lg"}
             />
           </Link>
           <div className="p-5">
