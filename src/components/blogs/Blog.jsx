@@ -2,39 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Img from "../layouts/UIhelpers/Img";
 
-const Blog = ({ link }) => {
+const Blog = ({ link, src, alt, title, description }) => {
   return (
-    <>
-      <div>
-        <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
-          <Link to={"blog/1"}>
-            <Img
-              className="rounded-t-lg"
-              src="https://flowbite.com/docs/images/blog/image-1.jpg"
-              alt=""
-              imgClassName={"rounded-t-lg"}
-            />
-          </Link>
-          <div className="p-5">
-            <Link to={link}>
-              <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2">
-                Noteworthy technology acquisitions 2021
-              </h5>
-            </Link>
-            <p className="font-normal text-gray-700 mb-3">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-            <Link
-              className="text-white bg-green-950  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
-              to={link}
-            >
-              Read more
-            </Link>
-          </div>
-        </div>
+    <div className="mb-5 bg-white border border-gray-200 rounded-lg shadow-md ">
+      <Link to={`blog/${link}`}>
+        <Img
+          className="rounded-t-lg"
+          src={src}
+          alt={alt}
+          imgClassName={"w-full object-cover rounded-t-lg h-[160px]"}
+        />
+      </Link>
+      <div className="p-5">
+        <Link to={`blog/${link}`}>
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            {title}
+          </h5>
+        </Link>
+        <p className="mb-3 font-normal text-gray-700">{description}</p>
+        <Link
+          className="px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-green-950 focus:ring-4 focus:ring-blue-300"
+          to={`blog/${link}`}
+        >
+          Read more
+        </Link>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -2,17 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { blogsApi } from "./blogsApi";
 
 const initialState = {
+  blogs: [],
   isLoading: false,
   isError: false,
   error: null,
-  blogs: [],
 };
 
 // calling api using redux thunk
 
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
   const blogs = await blogsApi();
-  console.log(blogs);
   return blogs;
 });
 
