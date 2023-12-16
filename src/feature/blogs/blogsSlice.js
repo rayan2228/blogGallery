@@ -12,6 +12,7 @@ const initialState = {
 
 export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
   const blogs = await blogsApi();
+  console.log(blogs);
   return blogs;
 });
 
