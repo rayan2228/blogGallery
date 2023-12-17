@@ -4,7 +4,7 @@ import Img from "../layouts/UIhelpers/Img";
 
 const Blog = ({ link, src, alt, title, description }) => {
   return (
-    <div className="mb-5 bg-white border border-gray-200 rounded-lg shadow-md ">
+    <div className="flex flex-col mb-5 bg-white border border-gray-200 rounded-lg shadow-md ">
       <Link to={`blog/${link}`}>
         <Img
           className="rounded-t-lg"
@@ -20,6 +20,8 @@ const Blog = ({ link, src, alt, title, description }) => {
           </h5>
         </Link>
         <p className="mb-3 font-normal text-gray-700">{description}</p>
+      </div>
+      <div className="px-5 pb-5 mt-auto">
         <Link
           className="px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-green-950 focus:ring-4 focus:ring-blue-300"
           to={`blog/${link}`}
