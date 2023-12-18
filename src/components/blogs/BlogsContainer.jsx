@@ -33,6 +33,7 @@ const BlogsContainer = () => {
         description={blog.description.slice(0, 100) + "..."}
         src={blog.image}
         alt={blog.title}
+        createdAt={blog.createdAt}
       />
     ));
   }

@@ -10,7 +10,7 @@ const Header = () => (
     <Container>
       <Grid className={"grid-cols-2 items-center"}>
         <Link to={"/"}>
-          <Img src={logo} className={"w-32"} />
+          <Img src={logo} className={"w-32"} alt={"logo"} />
         </Link>
         <Search />
       </Grid>

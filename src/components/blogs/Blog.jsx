@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Img from "../layouts/UIhelpers/Img";
 
-const Blog = ({ link, src, alt, title, description }) => {
+const Blog = ({ link, src, alt, title, description, createdAt }) => {
   return (
     <div className="flex flex-col mb-5 bg-white border border-gray-200 rounded-lg shadow-md ">
       <Link to={`blog/${link}`}>
@@ -11,6 +11,7 @@ const Blog = ({ link, src, alt, title, description }) => {
           src={src}
           alt={alt}
           imgClassName={"w-full object-cover rounded-t-lg h-[160px]"}
+          createdAt={createdAt}
         />
       </Link>
       <div className="p-5">

@@ -1,7 +1,6 @@
-import { axiosInstance } from "../../utils/config/axiosConfig"
+import { axiosInstance } from "../../utils/config/axiosConfig";
 
 export const singleBlogApi = async (id) => {
-    const response = await axiosInstance.get(`/blogs${id}`)
-    console.log(id);
+    const response = await axiosInstance.get(`/blogs/${id}`)
     return response.data
-} 
+}
