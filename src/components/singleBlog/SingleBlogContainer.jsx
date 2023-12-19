@@ -29,23 +29,26 @@ const SingleBlogContainer = () => {
   }
   if (!isLoading && !isError && Object.keys(singleBlog).length > 0) {
     content = (
-      <SingleBlog
-        src={singleBlog.image}
-        alt={singleBlog.title}
-        title={singleBlog.title}
-        description={singleBlog.description}
-        tags={singleBlog.tags}
-        likes={singleBlog.likes}
-        createdAt={singleBlog.createdAt}
-      />
+      <>
+        <SingleBlog
+          src={singleBlog.image}
+          alt={singleBlog.title}
+          title={singleBlog.title}
+          description={singleBlog.description}
+          tags={singleBlog.tags}
+          likes={singleBlog.likes}
+          createdAt={singleBlog.createdAt}
+        />
+        <RelatedBlogsContainer
+          tags={singleBlog.tags}
+          currentBlogId={singleBlog.id}
+        />
+      </>
     );
   }
   return (
     <Container>
-      <Grid className={"grid-cols-4 gap-x-5 mt-5"}>
-        {content}
-        <RelatedBlogsContainer />
-      </Grid>
+      <Grid className={"grid-cols-4 gap-x-5 mt-5"}>{content}</Grid>
     </Container>
   );
 };
