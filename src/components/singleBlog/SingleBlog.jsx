@@ -16,10 +16,26 @@ const SingleBlog = ({
   isSaved,
 }) => {
   const [isSavedState, setIsSavedState] = useState(isSaved);
+  const [isLikedState, setIsLikedState] = useState(false);
+  const [likesState, setLikesState] = useState(likes);
   const handleSaved = async (isSaved) => {
     setIsSavedState(!isSavedState);
     await axiosInstance.patch(`/blogs/${id}`, {
       isSaved: !isSaved,
+    });
+  };
+  const handleLike = async (likes) => {
+    setIsLikedState(true);
+    setLikesState(likes + 1);
+    await axiosInstance.patch(`/blogs/${id}`, {
+      likes: likes + 1,
+    });
+  };
+  const handleLikeUndo = async (likes) => {
+    setIsLikedState(false);
+    setLikesState(likes - 1);
+    await axiosInstance.patch(`/blogs/${id}`, {
+      likes: likes - 1,
     });
   };
   return (
@@ -28,10 +44,15 @@ const SingleBlog = ({
       <h2 className="my-5 text-3xl">{title}</h2>
       <Grid className={"grid-flow-col auto-cols-min gap-x-5 my-3"}>
         <div
-          className={`grid w-20 px-3 rounded-lg text-white  items-center grid-flow-col cursor-pointer bg-[#404764] `}
+          className={`grid w-20 px-3 rounded-lg text-white  items-center grid-flow-col cursor-pointer ${
+            isLikedState ? "bg-green-950" : "bg-[#404764]"
+          }`}
+          onClick={() =>
+            isLikedState ? handleLikeUndo(likesState) : handleLike(likesState)
+          }
         >
           <AiFillLike />
-          {likes}
+          {likesState}
         </div>
         <div
           className={`grid w-20 px-3 rounded-lg text-white  items-center grid-flow-col cursor-pointer ${
