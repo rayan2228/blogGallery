@@ -31,6 +31,7 @@ const SingleBlogContainer = () => {
     content = (
       <>
         <SingleBlog
+          id={singleBlog.id}
           src={singleBlog.image}
           alt={singleBlog.title}
           title={singleBlog.title}
@@ -38,6 +39,7 @@ const SingleBlogContainer = () => {
           tags={singleBlog.tags}
           likes={singleBlog.likes}
           createdAt={singleBlog.createdAt}
+          isSaved={singleBlog.isSaved}
         />
         <RelatedBlogsContainer
           tags={singleBlog.tags}
