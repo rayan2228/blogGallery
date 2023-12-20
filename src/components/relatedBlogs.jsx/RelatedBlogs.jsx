@@ -3,15 +3,16 @@ import Img from "../layouts/UIhelpers/Img";
 import { AiFillLike } from "react-icons/ai";
 import Grid from "../layouts/UIhelpers/Grid";
 import { IoTimeSharp } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchSingleBlog } from "../../feature/singleBlog/singleBlogSlice";
 
 const RelatedBlogs = ({ link, src, createdAt, title, likes, alt }) => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleNavigate = () => {
-    navigate(`/blog/1`);
+    dispatch(fetchSingleBlog(link));
   };
   return (
-    <div onClick={handleNavigate}>
+    <div onClick={handleNavigate} className="cursor-pointer">
       <Img src={src} alt={alt} createdAt={createdAt} />
       <div>
         <h2 className="text-lg">{title}</h2>
