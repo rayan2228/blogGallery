@@ -1,43 +1,29 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { filterBlogApi } from "./filterBlogApi";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 
 const initialState = {
-    filterBlog: [],
-    isLoading: false,
-    isError: false,
-    error: null,
+    filter: "",
+    sort: "",
+    search: ""
 };
 
-// calling api using redux thunk
 
-export const fetchFilterBlog = createAsyncThunk("filterBlog/fetchFilterBlog", async (filter) => {
-
-    const filterBlog = await filterBlogApi(filter);
-    return filterBlog;
-
-});
 
 export const filterBlogSlice = createSlice({
     name: "filterBlog",
     initialState,
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchFilterBlog.pending, (state) => {
-                state.isLoading = true;
-            })
-            .addCase(fetchFilterBlog.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.filterBlog = action.payload;
-            })
-            .addCase(fetchFilterBlog.rejected, (state, action) => {
-                state.isLoading = false;
-                state.filterBlog = [];
-                state.isError = true;
-                state.error = action.error.message;
-            });
-    },
+    reducers: {
+        filterBlog: (state, action) => {
+            state.filter = action.payload
+        },
+        sortBlog: (state, action) => {
+            state.sort = action.payload
+        },
+        searchBlog: (state, action) => {
+            state.search = action.payload
+        }
+    }
 });
-
+export const { filterBlog, sortBlog, searchBlog } = filterBlogSlice.actions
 export default filterBlogSlice.reducer;
