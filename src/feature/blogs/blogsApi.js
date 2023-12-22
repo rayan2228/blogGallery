@@ -1,7 +1,7 @@
 import { axiosInstance } from "../../utils/config/axiosConfig"
 
 export const blogsApi = async ({ filter, sort, search }) => {
-    console.log(filter);
+
     let queryString = ""
     if (filter != "all") {
         queryString += `isSaved=${filter}`
@@ -14,7 +14,6 @@ export const blogsApi = async ({ filter, sort, search }) => {
     if (search != "") {
         queryString += `&q=${search}`
     }
-    console.log(queryString);
     const response = await axiosInstance.get(`/blogs?${queryString}`)
     return response.data
 } 
