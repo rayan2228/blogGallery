@@ -7,13 +7,13 @@ import { fetchBlogs } from "../../feature/blogs/blogsSlice";
 
 const BlogsContainer = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchBlogs());
-  }, [dispatch]);
-
   const { blogs, isLoading, isError, error } = useSelector(
     (state) => state.blogs
   );
+  const { filter, sort, search } = useSelector((state) => state.filterBlog);
+  useEffect(() => {
+    dispatch(fetchBlogs({ filter, sort, search }));
+  }, [dispatch, filter, sort, search]);
 
   let content;
   if (isLoading) {

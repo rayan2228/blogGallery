@@ -10,8 +10,9 @@ const initialState = {
 
 // calling api using redux thunk
 
-export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async () => {
-  const blogs = await blogsApi();
+export const fetchBlogs = createAsyncThunk("blogs/fetchBlogs", async ({ filter, sort, search }) => {
+
+  const blogs = await blogsApi({ filter, sort, search });
   return blogs;
 });
 

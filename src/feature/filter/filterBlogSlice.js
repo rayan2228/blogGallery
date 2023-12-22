@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    filter: "",
-    sort: "",
+    filter: "all",
+    sort: "default",
     search: ""
 };
 
@@ -15,7 +15,13 @@ export const filterBlogSlice = createSlice({
     initialState,
     reducers: {
         filterBlog: (state, action) => {
-            state.filter = action.payload
+            if (action.payload === "saved") {
+                state.filter = true
+            } else if (action.payload === "not saved") {
+                state.filter = false
+            } else {
+                state.filter = action.payload
+            }
         },
         sortBlog: (state, action) => {
             state.sort = action.payload
