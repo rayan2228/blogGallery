@@ -14,28 +14,52 @@ const BlogsContainer = () => {
   const { blogs, isLoading, isError, error } = useSelector(
     (state) => state.blogs
   );
+  const { filterBlog, FilterIsLoading, FilterIsError, FilterError } =
+    useSelector((state) => state.filterBlog);
   let content;
-  if (isLoading) {
+  if (isLoading || FilterIsLoading) {
     content = "loading";
   }
-  if (!isLoading && isError) {
-    content = `<p>${error}</p>`;
+  if ((!isLoading && isError) || (!FilterIsLoading && FilterIsError)) {
+    content = `<p>${error || FilterIsError}</p>`;
   }
-  if (!isLoading && !isError && blogs?.length === 0) {
-    content = "<h2>no blogs found</h2>";
+  if (
+    (!isLoading && !isError && blogs?.length === 0) ||
+    (!FilterIsLoading && !FilterIsError && filterBlog?.length === 0)
+  ) {
+    content = `<h2>no ${
+      (blogs?.length === 0 && "blogs") ||
+      (filterBlog?.length === 0 && "saved blogs")
+    } found</h2>`;
   }
-  if (!isLoading && !isError && blogs?.length > 0) {
-    content = blogs.map((blog, index) => (
-      <Blog
-        key={index}
-        link={blog.id}
-        title={blog.title}
-        description={blog.description.slice(0, 100) + "..."}
-        src={blog.image}
-        alt={blog.title}
-        createdAt={blog.createdAt}
-      />
-    ));
+  if (
+    (!isLoading && !isError && blogs?.length > 0) ||
+    (!FilterIsLoading && !FilterIsError && filterBlog?.length > 0)
+  ) {
+    content =
+      filterBlog?.length !== 0
+        ? filterBlog.map((filterBlog, index) => (
+            <Blog
+              key={index}
+              link={filterBlog.id}
+              title={filterBlog.title}
+              description={filterBlog.description.slice(0, 100) + "..."}
+              src={filterBlog.image}
+              alt={filterBlog.title}
+              createdAt={filterBlog.createdAt}
+            />
+          ))
+        : blogs.map((blog, index) => (
+            <Blog
+              key={index}
+              link={blog.id}
+              title={blog.title}
+              description={blog.description.slice(0, 100) + "..."}
+              src={blog.image}
+              alt={blog.title}
+              createdAt={blog.createdAt}
+            />
+          ));
   }
 
   return (
