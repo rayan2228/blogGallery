@@ -7,7 +7,7 @@ const Search = () => {
   const [search, setSearch] = useState(searchValue);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
-    e.target.preventDefault();
+    e.preventDefault();
     dispatch(searchBlog(search));
   };
   return (
