@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchBlog } from "../../feature/filter/filterBlogSlice";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
+  const navigate = useNavigate();
   const searchValue = useSelector((state) => state.filterBlog.search);
   const [search, setSearch] = useState(searchValue);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchBlog(search));
+    navigate("/");
   };
   return (
     <div className="justify-self-end">
