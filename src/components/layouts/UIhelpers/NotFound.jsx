@@ -8,10 +8,10 @@ const NotFound = ({ message }) => {
         "justify-center items-center col-span-full bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
       }
     >
-      <div class="flex">
-        <div class="py-1">
+      <div className="flex">
+        <div className="py-1">
           <svg
-            class="fill-current h-6 w-6 text-teal-500 mr-4"
+            className="w-6 h-6 mr-4 text-teal-500 fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
@@ -19,7 +19,7 @@ const NotFound = ({ message }) => {
           </svg>
         </div>
         <div>
-          <p class="font-bold">{message}</p>
+          <p className="font-bold">{message}</p>
         </div>
       </div>
     </Grid>

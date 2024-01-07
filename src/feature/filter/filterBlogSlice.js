@@ -15,13 +15,7 @@ export const filterBlogSlice = createSlice({
     initialState,
     reducers: {
         filterBlog: (state, action) => {
-            if (action.payload === "saved") {
-                state.filter = true
-            } else if (action.payload === "not saved") {
-                state.filter = false
-            } else {
-                state.filter = action.payload
-            }
+            state.filter = action.payload
         },
         sortBlog: (state, action) => {
             state.sort = action.payload

@@ -3,8 +3,13 @@ import { axiosInstance } from "../../utils/config/axiosConfig"
 export const blogsApi = async ({ filter, sort, search }) => {
 
     let queryString = ""
-    if (filter != "all") {
-        queryString += `isSaved=${filter}`
+    if (filter === "saved") {
+        queryString += `isSaved=true`
+    } else if (filter === "not saved") {
+        queryString += `isSaved=false`
+    }
+    else {
+        queryString += ""
     }
     if (sort === "newest") {
         queryString += '&_sort=createdAt&_order=desc'
