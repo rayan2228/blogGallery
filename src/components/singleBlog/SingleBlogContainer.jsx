@@ -6,6 +6,9 @@ import RelatedBlogsContainer from "../relatedBlogs.jsx/RelatedBlogsContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleBlog } from "../../feature/singleBlog/singleBlogSlice";
 import { useParams } from "react-router-dom";
+import Loading from "../layouts/UIhelpers/Loading";
+import Error from "../layouts/UIhelpers/Error";
+import NotFound from "../layouts/UIhelpers/NotFound";
 
 const SingleBlogContainer = () => {
   const dispatch = useDispatch();
@@ -19,13 +22,13 @@ const SingleBlogContainer = () => {
   );
   let content;
   if (isLoading) {
-    content = "loading";
+    content = <Loading />;
   }
   if (!isLoading && isError) {
-    content = `<p>${error}</p>`;
+    content = <Error error={error} />;
   }
   if (!isLoading && !isError && Object.keys(singleBlog).length === 0) {
-    content = "<h2>no blogs found</h2>";
+    content = <NotFound message={"no blog found"} />;
   }
   if (!isLoading && !isError && Object.keys(singleBlog).length > 0) {
     content = (

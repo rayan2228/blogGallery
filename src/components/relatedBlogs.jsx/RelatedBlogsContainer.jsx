@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import RelatedBlogs from "./RelatedBlogs";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRelatedBlog } from "../../feature/relatedBlogs/relatedBlogsSlice";
+import Loading from "../layouts/UIhelpers/Loading";
+import Error from "../layouts/UIhelpers/Error";
+import NotFound from "../layouts/UIhelpers/NotFound";
 
 const RelatedBlogsContainer = ({ tags, currentBlogId }) => {
   const dispatch = useDispatch();
@@ -14,13 +17,13 @@ const RelatedBlogsContainer = ({ tags, currentBlogId }) => {
   );
   let content;
   if (isLoading) {
-    content = "loading";
+    content = <Loading />;
   }
   if (!isLoading && isError) {
-    content = `<p>${error}</p>`;
+    content = <Error error={error} />;
   }
   if (!isLoading && !isError && relatedBlog.length === 0) {
-    content = "<h2>no blogs found</h2>";
+    content = <NotFound message={"no blogs found"} />;
   }
   if (!isLoading && !isError && relatedBlog.length > 0) {
     content = relatedBlog.map((blog, index) => (

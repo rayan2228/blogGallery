@@ -4,6 +4,9 @@ import Grid from "../layouts/UIhelpers/Grid";
 import Blog from "./Blog";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogs } from "../../feature/blogs/blogsSlice";
+import Loading from "../layouts/UIhelpers/Loading";
+import Error from "../layouts/UIhelpers/Error";
+import NotFound from "../layouts/UIhelpers/NotFound";
 
 const BlogsContainer = () => {
   const dispatch = useDispatch();
@@ -17,13 +20,13 @@ const BlogsContainer = () => {
 
   let content;
   if (isLoading) {
-    content = "loading";
+    content = <Loading />;
   }
   if (!isLoading && isError) {
-    content = `<p>${error || FilterIsError}</p>`;
+    content = <Error error={error} />;
   }
   if (!isLoading && !isError && blogs?.length === 0) {
-    content = `<h2>no blogs found</h2>`;
+    content = <NotFound message={"no blogs found"} />;
   }
   if (!isLoading && !isError && blogs?.length > 0) {
     content = blogs.map((blog, index) => (
