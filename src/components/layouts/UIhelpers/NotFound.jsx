@@ -1,10 +1,12 @@
 import React from "react";
+import Grid from "./Grid";
 
 const NotFound = ({ message }) => {
   return (
-    <div
-      class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
-      role="alert"
+    <Grid
+      className={
+        "justify-center items-center col-span-full bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+      }
     >
       <div class="flex">
         <div class="py-1">
@@ -20,7 +22,7 @@ const NotFound = ({ message }) => {
           <p class="font-bold">{message}</p>
         </div>
       </div>
-    </div>
+    </Grid>
   );
 };
 
