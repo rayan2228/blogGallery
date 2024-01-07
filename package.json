@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "rayan hossain",
   "scripts": {
     "start": "json-server --watch  src/data/db.json",
     "dev": "vite ",

@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../layouts/UIhelpers/Container";
 import Img from "../layouts/UIhelpers/Img";
-import logo from "../../assets/rayan.png";
+import logo from "../../../public/rayan.png";
 import Grid from "../layouts/UIhelpers/Grid";
 import Search from "./Search";
 import { Link } from "react-router-dom";
